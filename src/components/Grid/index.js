@@ -7,8 +7,8 @@ import Cell from "../Cell/";
 class Grid extends React.PureComponent {
   state = {
     grid: [],
-    cols: 5,
-    rows: 5,
+    cols: this.props.cols,
+    rows: this.props.rows,
   };
 
   make2DArray = (cols, rows) => {
