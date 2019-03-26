@@ -5,7 +5,7 @@ import {StyledCell} from "./style";
 
 class Cell extends PureComponent {
   state = {
-    mine: this.props.isMine,
+    mine: this.props.mine,
     revealed: false,
     counter: undefined,
     x: undefined,

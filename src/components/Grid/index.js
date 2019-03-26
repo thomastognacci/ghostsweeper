@@ -26,7 +26,7 @@ class Grid extends React.PureComponent {
 
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
-        grid[i][j] = <Cell key={j + i * cols} x={j} y={i} />;
+        grid[i][j] = <Cell key={j + i * cols} mine={Math.random() < 0.25} x={j} y={i} />;
       }
     }
 
@@ -51,6 +51,9 @@ class Grid extends React.PureComponent {
   }
 }
 
-Grid.propTypes = {};
+Grid.propTypes = {
+  cols: PropTypes.number.isRequired,
+  rows: PropTypes.number.isRequired,
+};
 
 export default Grid;
