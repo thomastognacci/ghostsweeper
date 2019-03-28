@@ -4,29 +4,27 @@ import PropTypes from "prop-types";
 import {StyledCell} from "./style";
 
 class Cell extends PureComponent {
-  state = {
-    mine: this.props.mine,
-    revealed: false || this.props.revealed,
-    neighboursCount: undefined,
-    x: undefined,
-    y: undefined,
-  };
-
-  handleReveal = () => {
-    this.setState({revealed: true});
-  };
-
-  componentDidUpdate = (prevProps) => {
-    if (!prevProps.revealed && this.props.revealed) {
-      this.handleReveal();
-    }
-  };
   render() {
-    const {revealed} = this.state;
-    const {mine, handleCellClick, x, y} = this.props;
+    const {revealed, mine, handleCellClick, mineCount, x, y} = this.props;
+    let className = "land";
+    if (revealed) {
+      if (mine) {
+        className = "mine";
+      } else if (mineCount > 0) {
+        className = `num-${mineCount}`;
+      } else {
+        className = "empty";
+      }
+    }
     return (
-      <StyledCell onClick={() => handleCellClick(x, y)}>
-        {revealed ? (mine ? "X" : "0") : "-"}
+      <StyledCell
+        revealed={revealed}
+        mine={mine}
+        isNumber={mineCount > 0}
+        className={className}
+        onClick={() => handleCellClick(x, y)}
+      >
+        {revealed ? (mine ? "👻" : mineCount === 0 ? "" : mineCount) : ""}
       </StyledCell>
     );
   }

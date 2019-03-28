@@ -35,6 +35,7 @@ class Grid extends React.PureComponent {
           key: j + x * cols,
           revealed: false,
           mine: false,
+          mineCount: 0,
           x,
           y,
         };
@@ -42,8 +43,9 @@ class Grid extends React.PureComponent {
     }
 
     const gridWithMine = this.placeMines(mineAmount, grid, options);
+    const gridWithCounter = this.countMines(gridWithMine);
 
-    this.setState({grid: gridWithMine});
+    this.setState({grid: gridWithCounter});
   };
 
   placeMines = (amount, grid, options) => {
@@ -63,14 +65,69 @@ class Grid extends React.PureComponent {
     return gridWithMine;
   };
 
+  countMines = (grid) => {
+    const {cols, rows} = this.props;
+
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        let x = i;
+        let y = j;
+
+        if (grid[x][y].mine) {
+          grid[x][y].mineCount = -1;
+          continue;
+        }
+        let counter = 0;
+        for (let xOff = -1; xOff <= 1; xOff++) {
+          for (let yOff = -1; yOff <= 1; yOff++) {
+            if (x + xOff > -1 && x + xOff < cols && y + yOff > -1 && y + yOff < rows) {
+              let neighbour = grid[x + xOff][y + yOff];
+              if (neighbour.mine) {
+                counter++;
+              }
+            }
+          }
+        }
+        grid[x][y].mineCount = counter;
+      }
+    }
+
+    return grid;
+  };
+
   handleCellClick = (x, y) => {
     const {grid} = this.state;
 
-    const newGrid = grid;
+    if (grid[x][y].revealed) return;
 
-    newGrid[x][y].revealed = true;
-
+    let newGrid;
+    if (grid[x][y].mineCount === 0) {
+      newGrid = this.revealNeighbor(grid, x, y);
+    } else {
+      newGrid = grid;
+      newGrid[x][y].revealed = true;
+    }
     this.setState({grid: [...newGrid]});
+  };
+
+  revealNeighbor = (grid, x, y) => {
+    const {cols, rows} = this.props;
+
+    for (let xOff = -1; xOff <= 1; xOff++) {
+      for (let yOff = -1; yOff <= 1; yOff++) {
+        if (x + xOff > -1 && x + xOff < cols && y + yOff > -1 && y + yOff < rows) {
+          let neighbour = grid[x + xOff][y + yOff];
+          if (!neighbour.revealed && !neighbour.mine) {
+            neighbour.revealed = true;
+            if (neighbour.mineCount === 0) {
+              this.revealNeighbor(grid, x + xOff, y + yOff);
+            }
+          }
+        }
+      }
+    }
+
+    return grid;
   };
 
   renderGrid = () => {
@@ -86,6 +143,7 @@ class Grid extends React.PureComponent {
             x={cell.x}
             y={cell.y}
             mine={cell.mine}
+            mineCount={cell.mineCount}
             revealed={cell.revealed}
             handleCellClick={this.handleCellClick}
           />
