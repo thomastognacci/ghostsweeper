@@ -6,14 +6,29 @@ import {StyledCell} from "./style";
 class Cell extends PureComponent {
   state = {
     mine: this.props.mine,
-    revealed: false,
-    counter: undefined,
+    revealed: false || this.props.revealed,
+    neighboursCount: undefined,
     x: undefined,
     y: undefined,
   };
+
+  handleReveal = () => {
+    this.setState({revealed: true});
+  };
+
+  componentDidUpdate = (prevProps) => {
+    if (!prevProps.revealed && this.props.revealed) {
+      this.handleReveal();
+    }
+  };
   render() {
-    const {mine} = this.state;
-    return <StyledCell>{mine ? "X" : "0"}</StyledCell>;
+    const {revealed} = this.state;
+    const {mine, handleCellClick, x, y} = this.props;
+    return (
+      <StyledCell onClick={() => handleCellClick(x, y)}>
+        {revealed ? (mine ? "X" : "0") : "-"}
+      </StyledCell>
+    );
   }
 }
 

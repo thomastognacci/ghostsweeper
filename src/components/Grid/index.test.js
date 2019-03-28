@@ -11,7 +11,7 @@ global.Math = mockMath;
 
 describe("<Grid />", () => {
   it("renders without crashing", () => {
-    shallow(<Grid />);
+    shallow(<Grid rows={5} cols={5} />);
   });
 
   it("renders a correct 5*5 grid", () => {

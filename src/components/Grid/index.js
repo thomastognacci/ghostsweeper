@@ -26,25 +26,62 @@ class Grid extends React.PureComponent {
 
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
-        grid[i][j] = <Cell key={j + i * cols} mine={Math.random() < 0.25} x={j} y={i} />;
+        let x = i;
+        let y = j;
+        grid[x][y] = {
+          key: j + x * cols,
+          mine: Math.random() < 0.25,
+          x,
+          y,
+        };
       }
     }
 
     this.setState({grid});
   };
 
+  handleCellClick = (x, y) => {
+    const {grid} = this.state;
+    console.log("click", x, y);
+
+    const newGrid = grid;
+
+    newGrid[x][y].revealed = true;
+
+    this.setState({grid: [...newGrid]});
+  };
+
   renderGrid = () => {
     const {grid} = this.state;
 
-    return grid;
+    if (grid.length === 0) return;
+
+    return grid.map((cols) => {
+      return cols.map((cell) => {
+        return (
+          <Cell
+            key={cell.key}
+            x={cell.x}
+            y={cell.y}
+            mine={cell.mine}
+            revealed={cell.revealed}
+            handleCellClick={this.handleCellClick}
+          />
+        );
+      });
+    });
   };
   componentDidMount() {
     this.generateGrid();
   }
+  componentDidUpdate() {
+    // console.log("up");
+    // this.renderGrid();
+  }
   render() {
     const {grid, cols, rows} = this.state;
     return (
-      <StyledGrid cols={cols} rows={rows}>
+      <StyledGrid onClick={this.handleClick} cols={cols} rows={rows}>
         {grid && this.renderGrid()}
       </StyledGrid>
     );

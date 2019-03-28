@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const StyledGrid = styled.div`
   margin: 15%;
   display: grid;
-  grid-template-columns: ${(props) => `repeat(${props.cols}, 50px)`};
-  grid-auto-rows: 50px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(5, 50px);
+  grid-auto-columns: 50px;
   justify-content: center;
   align-items: center;
 

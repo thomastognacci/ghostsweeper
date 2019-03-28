@@ -2,134 +2,159 @@
 
 exports[`<Grid /> renders a correct 5*5 grid 1`] = `
 <div
-  className="sc-bdVaJa fStdKP"
+  className="sc-bdVaJa gpMMOX"
   cols={5}
   rows={5}
 >
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
   <div
     className="sc-bwzfXH iQsHqK"
+    onClick={[Function]}
   >
-    0
+    -
   </div>
 </div>
 `;
