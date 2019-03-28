@@ -7,6 +7,7 @@ import Cell from "../Cell/";
 class Grid extends React.PureComponent {
   state = {
     grid: [],
+    mineAmount: this.props.mineAmount,
     cols: this.props.cols,
     rows: this.props.rows,
   };
@@ -20,29 +21,50 @@ class Grid extends React.PureComponent {
   };
 
   generateGrid = () => {
-    const {cols, rows} = this.state;
+    const {cols, rows, mineAmount} = this.state;
 
     const grid = this.make2DArray(cols, rows);
-
+    let options = [];
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
         let x = i;
         let y = j;
+        options.push([x, y]);
+
         grid[x][y] = {
           key: j + x * cols,
-          mine: Math.random() < 0.25,
+          revealed: false,
+          mine: false,
           x,
           y,
         };
       }
     }
 
-    this.setState({grid});
+    const gridWithMine = this.placeMines(mineAmount, grid, options);
+
+    this.setState({grid: gridWithMine});
+  };
+
+  placeMines = (amount, grid, options) => {
+    let gridWithMine = grid;
+
+    for (let i = 0; i < amount; i++) {
+      let index = Math.floor(Math.random() * options.length);
+      let pick = options[index];
+      let x = pick[0];
+      let y = pick[1];
+
+      gridWithMine[x][y].mine = true;
+
+      options.splice(index, 1);
+    }
+
+    return gridWithMine;
   };
 
   handleCellClick = (x, y) => {
     const {grid} = this.state;
-    console.log("click", x, y);
 
     const newGrid = grid;
 

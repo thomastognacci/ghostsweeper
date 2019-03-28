@@ -3,7 +3,7 @@ import Grid from "../Grid";
 
 class App extends Component {
   render() {
-    return <Grid cols={5} rows={5} />;
+    return <Grid cols={5} rows={5} mineAmount={5} />;
   }
 }
 
