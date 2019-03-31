@@ -1,13 +1,13 @@
 {
   "main.css": "/ghostsweeper/static/css/main.6952ca3e.chunk.css",
-  "main.js": "/ghostsweeper/static/js/main.1ba4a5bd.chunk.js",
-  "main.js.map": "/ghostsweeper/static/js/main.1ba4a5bd.chunk.js.map",
+  "main.js": "/ghostsweeper/static/js/main.db2e9bdb.chunk.js",
+  "main.js.map": "/ghostsweeper/static/js/main.db2e9bdb.chunk.js.map",
   "runtime~main.js": "/ghostsweeper/static/js/runtime~main.c85a59fd.js",
   "runtime~main.js.map": "/ghostsweeper/static/js/runtime~main.c85a59fd.js.map",
-  "static/js/2.48828570.chunk.js": "/ghostsweeper/static/js/2.48828570.chunk.js",
-  "static/js/2.48828570.chunk.js.map": "/ghostsweeper/static/js/2.48828570.chunk.js.map",
+  "static/js/2.6ecc3357.chunk.js": "/ghostsweeper/static/js/2.6ecc3357.chunk.js",
+  "static/js/2.6ecc3357.chunk.js.map": "/ghostsweeper/static/js/2.6ecc3357.chunk.js.map",
   "index.html": "/ghostsweeper/index.html",
-  "precache-manifest.6ced9e6e61acaec7a599d3a964a73294.js": "/ghostsweeper/precache-manifest.6ced9e6e61acaec7a599d3a964a73294.js",
+  "precache-manifest.d69750572e980241e1f368b92b803afb.js": "/ghostsweeper/precache-manifest.d69750572e980241e1f368b92b803afb.js",
   "service-worker.js": "/ghostsweeper/service-worker.js",
   "static/css/main.6952ca3e.chunk.css.map": "/ghostsweeper/static/css/main.6952ca3e.chunk.css.map"
 }
