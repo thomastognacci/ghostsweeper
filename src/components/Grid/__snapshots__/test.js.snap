@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid /> renders a correct 5*5 grid 1`] = `
+<div
+  className="sc-bdVaJa hdwQxo"
+  cols={5}
+  rows={5}
+>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+  <div
+    className="land sc-bwzfXH uaYRD"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    
+  </div>
+</div>
+`;
