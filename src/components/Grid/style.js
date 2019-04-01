@@ -10,10 +10,12 @@ export const StyledGrid = styled.div`
 
   position: relative;
   width: 500px;
-  margin: 10vh auto;
+  margin: auto;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.25);
+
+  flex: 0 0 auto;
 
   &:before {
     content: "";
