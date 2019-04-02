@@ -6,23 +6,64 @@ import {StyledCell} from "./style";
 class Cell extends PureComponent {
   state = {
     flag: false,
+    questionMark: false,
+  };
+  renderCellContent = () => {
+    const {flag, questionMark} = this.state;
+    const {revealed, ghost, mineCount} = this.props;
+
+    if (revealed) {
+      if (ghost) {
+        return "👻";
+      } else {
+        if (mineCount === 0) {
+          return "";
+        } else {
+          return mineCount;
+        }
+      }
+    }
+    if (flag) {
+      return "✅";
+    }
+    if (questionMark) {
+      return "👀";
+    }
+  };
+  handleFlag = (e) => {
+    const {flagCount, ghostAmount} = this.props;
+    const {flag, questionMark} = this.state;
+    e.preventDefault();
+    if (flag) {
+      this.setState({flag: false, questionMark: true});
+    } else if (questionMark) {
+      this.setState({questionMark: false});
+    } else {
+      if (flagCount >= ghostAmount) {
+        this.setState({questionMark: true});
+      } else {
+        this.setState({flag: true});
+      }
+    }
   };
 
-  handleFlag = (e) => {
-    const {handleFlagCount, flagCount, ghostAmount} = this.props;
-    const {flag} = this.state;
-    e.preventDefault();
-    if (!flag && flagCount >= ghostAmount) return;
-    this.setState((prevState) => ({flag: !prevState.flag}), handleFlagCount(flag));
-  };
+  componentDidUpdate(prevProps, prevState) {
+    const {handleFlagCount} = this.props;
+
+    if (prevProps.shouldRestart === false && this.props.shouldRestart) {
+      this.setState({flag: false});
+    }
+    if (prevState.flag !== this.state.flag && !this.props.revealed) {
+      handleFlagCount(this.state.flag);
+    }
+  }
 
   render() {
-    const {flag} = this.state;
-    const {revealed, mine, handleCellClick, mineCount, x, y} = this.props;
+    const {revealed, ghost, handleCellClick, mineCount, x, y} = this.props;
     let className = "land";
     if (revealed) {
-      if (mine) {
-        className = "mine";
+      if (ghost) {
+        className = "ghost";
       } else if (mineCount > 0) {
         className = `num-${mineCount}`;
       } else {
@@ -32,13 +73,13 @@ class Cell extends PureComponent {
     return (
       <StyledCell
         revealed={revealed}
-        mine={mine}
+        ghost={ghost}
         isNumber={mineCount > 0}
         className={className}
         onClick={() => handleCellClick(x, y)}
         onContextMenu={this.handleFlag}
       >
-        {flag ? "🏳" : revealed ? (mine ? "👻" : mineCount === 0 ? "" : mineCount) : ""}
+        {this.renderCellContent()}
       </StyledCell>
     );
   }

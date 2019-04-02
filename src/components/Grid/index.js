@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import {StyledGrid} from "./style";
 import Cell from "../Cell/";
+
+let timeoutIDs = [];
 class Grid extends React.PureComponent {
   state = {
     grid: [],
@@ -34,7 +36,7 @@ class Grid extends React.PureComponent {
         grid[x][y] = {
           key: j + x * cols,
           revealed: false,
-          mine: false,
+          ghost: false,
           mineCount: 0,
           x,
           y,
@@ -42,13 +44,13 @@ class Grid extends React.PureComponent {
       }
     }
 
-    const gridWithMine = this.placeMines(ghostAmount, grid, options);
-    const gridWithCounter = this.countMines(gridWithMine);
+    const gridWithMine = this.placeGhosts(ghostAmount, grid, options);
+    const gridWithCounter = this.countGhosts(gridWithMine);
 
     this.setState({grid: gridWithCounter});
   };
 
-  placeMines = (amount, grid, options) => {
+  placeGhosts = (amount, grid, options) => {
     let gridWithMine = grid;
 
     for (let i = 0; i < amount; i++) {
@@ -57,7 +59,7 @@ class Grid extends React.PureComponent {
       let x = pick[0];
       let y = pick[1];
 
-      gridWithMine[x][y].mine = true;
+      gridWithMine[x][y].ghost = true;
 
       options.splice(index, 1);
     }
@@ -65,7 +67,7 @@ class Grid extends React.PureComponent {
     return gridWithMine;
   };
 
-  countMines = (grid) => {
+  countGhosts = (grid) => {
     const {cols, rows} = this.props;
 
     for (let i = 0; i < cols; i++) {
@@ -73,7 +75,7 @@ class Grid extends React.PureComponent {
         let x = i;
         let y = j;
 
-        if (grid[x][y].mine) {
+        if (grid[x][y].ghost) {
           grid[x][y].mineCount = -1;
           continue;
         }
@@ -82,7 +84,7 @@ class Grid extends React.PureComponent {
           for (let yOff = -1; yOff <= 1; yOff++) {
             if (x + xOff > -1 && x + xOff < cols && y + yOff > -1 && y + yOff < rows) {
               let neighbour = grid[x + xOff][y + yOff];
-              if (neighbour.mine) {
+              if (neighbour.ghost) {
                 counter++;
               }
             }
@@ -101,7 +103,7 @@ class Grid extends React.PureComponent {
 
     if (grid[x][y].revealed) return;
 
-    if (grid[x][y].mine) {
+    if (grid[x][y].ghost) {
       this.gameOver();
     }
     let newGrid;
@@ -133,19 +135,22 @@ class Grid extends React.PureComponent {
 
   revealNeighbor = (newGrid, x, y) => {
     const {cols, rows, handleCellRevealedCount} = this.props;
+
     let revealedCount = 0;
 
     for (let xOff = -1; xOff <= 1; xOff++) {
       for (let yOff = -1; yOff <= 1; yOff++) {
         if (x + xOff > -1 && x + xOff < cols && y + yOff > -1 && y + yOff < rows) {
           let neighbour = newGrid[x + xOff][y + yOff];
-          if (!neighbour.revealed && !neighbour.mine) {
+          if (!neighbour.revealed && !neighbour.ghost) {
             neighbour.revealed = true;
             revealedCount++;
             if (neighbour.mineCount === 0) {
-              setTimeout(() => {
-                this.revealNeighbor(newGrid, x + xOff, y + yOff);
-              }, 150);
+              timeoutIDs.push(
+                setTimeout(() => {
+                  this.revealNeighbor(newGrid, x + xOff, y + yOff);
+                }, 150)
+              );
             }
           }
         }
@@ -162,7 +167,7 @@ class Grid extends React.PureComponent {
 
   renderGrid = () => {
     const {grid} = this.state;
-    const {handleFlagCount, flagCount, ghostAmount} = this.props;
+    const {handleFlagCount, flagCount, ghostAmount, shouldRestart} = this.props;
 
     if (grid.length === 0) return;
 
@@ -173,26 +178,36 @@ class Grid extends React.PureComponent {
             key={cell.key}
             x={cell.x}
             y={cell.y}
-            mine={cell.mine}
+            ghost={cell.ghost}
             mineCount={cell.mineCount}
             revealed={cell.revealed}
             handleCellClick={this.handleCellClick}
             handleFlagCount={handleFlagCount}
             flagCount={flagCount}
             ghostAmount={ghostAmount}
+            shouldRestart={shouldRestart}
           />
         );
       });
     });
   };
+  resetGrid = () => {
+    const {restartGame} = this.props;
+
+    timeoutIDs.map((id) => clearTimeout(id));
+    this.generateGrid();
+    restartGame(false);
+  };
   componentDidMount() {
     this.generateGrid();
   }
-  componentDidUpdate() {
-    // console.log("up");
-    // this.renderGrid();
-    // clearTimeout(timeoutID)
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.shouldRestart === false && this.props.shouldRestart) {
+      this.resetGrid();
+    }
   }
+
   render() {
     const {grid, cols, rows} = this.state;
 

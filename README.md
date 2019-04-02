@@ -1,6 +1,6 @@
 # 👻 GhostSweeper
 
-A minesweeper game built with React
+A ghostsweeper game built with React
 
 ## 🎮 GitHub Page
 

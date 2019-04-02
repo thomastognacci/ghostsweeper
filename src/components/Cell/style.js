@@ -25,7 +25,7 @@ export const StyledCell = styled.div`
   &.empty {
     background-color: #795548;
   }
-  &.mine {
+  &.ghost {
     background-color: #ffffff;
   }
   &.num-1 {

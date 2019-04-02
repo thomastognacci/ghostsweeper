@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const StyledGrid = styled.div`
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: ${(props) => `repeat(${props.rows}, ${500 / props.rows}px)`};
-  grid-auto-columns: ${(props) => `${500 / props.rows}px`};
+  grid-template-rows: ${(props) => `repeat(${props.rows}, ${350 / props.rows}px)`};
+  grid-auto-columns: ${(props) => `${350 / props.rows}px`};
   justify-content: center;
   align-items: center;
 
   position: relative;
-  width: 500px;
+
   margin: auto;
-  border-radius: 10px;
+  border-radius: 3px;
   overflow: hidden;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.25);
 
