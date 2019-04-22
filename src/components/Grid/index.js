@@ -148,8 +148,8 @@ class Grid extends React.PureComponent {
             if (neighbour.mineCount === 0) {
               timeoutIDs.push(
                 setTimeout(() => {
-                  this.revealNeighbor(newGrid, x + xOff, y + yOff);
-                }, 150)
+                  requestAnimationFrame(() => this.revealNeighbor(newGrid, x + xOff, y + yOff));
+                }, 100)
               );
             }
           }

@@ -37,6 +37,21 @@ class App extends Component {
     this.setState({shouldRestart: bool, cellRevealedCount: 0, flagCount: 0});
   };
 
+  handleWin = () => {
+    console.log("WIN");
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const {cellRevealedCount, cols, rows, ghostAmount} = this.state;
+
+    if (
+      prevState.cellRevealedCount !== cellRevealedCount &&
+      cellRevealedCount === cols * rows - ghostAmount
+    ) {
+      this.handleWin();
+    }
+  }
+
   render() {
     const {cols, rows, flagCount, ghostAmount, cellRevealedCount, shouldRestart} = this.state;
 

@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {StyledHUD} from "./style";
 
-const index = ({flagCount, ghostAmount, cellRevealedCount, totalCellCount, restartGame}) => {
+const index = ({flagCount, ghostAmount, cellRevealedCount, restartGame}) => {
   return (
-    <div>
-      <div>Ghost: {ghostAmount - flagCount}</div>
-      <div>
-        Cell Revealed: {cellRevealedCount}/{totalCellCount}
+    <StyledHUD>
+      <div className="ghost-amount">Ghosts: {ghostAmount - flagCount}</div>
+
+      <div className="restart">
+        <button onClick={restartGame}>
+          <span role="img" aria-label="restart">
+            👻
+          </span>
+        </button>
       </div>
-      <div>Score : {ghostAmount * cellRevealedCount}</div>
-      <button onClick={restartGame}>
-        <span role="img" aria-label="restart">
-          👻
-        </span>
-      </button>
-    </div>
+      <div className="score">Score : {ghostAmount * cellRevealedCount}</div>
+    </StyledHUD>
   );
 };
 
